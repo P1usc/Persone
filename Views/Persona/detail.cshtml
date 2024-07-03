@@ -1,3 +1,55 @@
-@model Persone.Models.ViewModels.PersonaViewModel
+@model PersonaViewModel
 
-<h1>Dettagli persona  @Model.nome</h1>
+<h1>Dettagli persona (@Model.nome @Model.cognome)</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Informazione</th>
+            <th>Dettaglio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ID</td>
+            <td>@Model.id</td>
+        </tr>
+        <tr>
+            <td>Nome</td>
+            <td>@Model.nome</td>
+        </tr>
+        <tr>
+            <td>Cognome</td>
+            <td>@Model.cognome</td>
+        </tr>
+        <tr>
+            <td>Città</td>
+            <td>@Model.citta</td>
+        </tr>
+        <tr>
+            <td>Età</td>
+            <td>@Model.eta</td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+    .table {
+        width: 100%;
+        margin: 20px 0;
+        border-collapse: collapse;
+    }
+    .table th, .table td {
+        padding: 5px;
+        text-align: left;
+    }
+    .table thead th {
+        background-color: #f2f2f2;
+    }
+    .table tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+    .table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>

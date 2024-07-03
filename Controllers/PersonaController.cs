@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Persone.Models.Services;
+using Persone.Models.ViewModels;
 
 namespace Persone.Controllers
 {
@@ -20,7 +21,18 @@ namespace Persone.Controllers
 
         public IActionResult Detail(int id)
         {
-            return View();
+            var persone = PersonaServices.GetPersone();
+            var persona = persone.FirstOrDefault(p => p.id == id);  // Usa 'id' anziché 'Id'
+            PersonaViewModel viewModel = new PersonaViewModel
+            {
+                id = persona.id,
+                nome = persona.nome,
+                cognome = persona.cognome,
+                citta = persona.citta,
+                eta = persona.eta
+            };
+
+            return View(viewModel);
         }
 
         
