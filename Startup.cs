@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Persone.Models.Services;
+using Persone.Models.Services.Application;
+using Persone.Models.Services.Infrastructure;
 
 namespace Persone
 {
@@ -34,7 +35,9 @@ namespace Persone
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddTransient<IPersonaServices, PersonaServices>();
+            services.AddTransient<IPersonaServices, AdoNetPersonaService>();
+            services.AddTransient<IDatabaseAccessor, SqliteDatabaseAccessor>();
+
 
         }
 

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Persone.Models.ViewModels;
 
 
-namespace Persone.Models.Services
+namespace Persone.Models.Services.Application
 {
     public class PersonaServices:IPersonaServices
     {
@@ -25,13 +25,7 @@ namespace Persone.Models.Services
                 citta = "Torino",
                 eta = 25
             },
-            new PersonaViewModel{
-                id = 3,
-                nome = "Giuseppe",
-                cognome = "Verdi",
-                citta = "Roma",
-                eta = 28
-            }
+            
         };
         return Listapersone;
         }
