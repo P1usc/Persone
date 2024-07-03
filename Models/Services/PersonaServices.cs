@@ -7,9 +7,9 @@ using Persone.Models.ViewModels;
 
 namespace Persone.Models.Services
 {
-    public class PersonaServices
+    public class PersonaServices:IPersonaServices
     {
-        public static List<PersonaViewModel> GetPersone(){
+        public List<PersonaViewModel> GetPersone(){
             var Listapersone = new List<PersonaViewModel>(){
             new PersonaViewModel{
                 id = 1,

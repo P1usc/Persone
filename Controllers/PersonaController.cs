@@ -12,10 +12,15 @@ namespace Persone.Controllers
 {
     public class PersonaController : Controller
     {
+        private readonly IPersonaServices PersonaServices;
+        public PersonaController(IPersonaServices personaServices){
+            this.PersonaServices = personaServices;
+        }
        
         public IActionResult Index()
         {
-            var persone = PersonaServices.GetPersone();
+            //var persone = PersonaServices.GetPersone();
+            List<PersonaViewModel> persone = PersonaServices.GetPersone();
             return View(persone);
         }
 
