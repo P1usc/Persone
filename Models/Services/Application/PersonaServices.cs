@@ -7,28 +7,45 @@ using Persone.Models.ViewModels;
 
 namespace Persone.Models.Services.Application
 {
-    public class PersonaServices:IPersonaServices
+    public class PersonaServices : IPersonaServices
     {
         public List<PersonaViewModel> GetPersone(){
             var Listapersone = new List<PersonaViewModel>(){
-            new PersonaViewModel{
-                id = 1,
-                nome = "Mario",
-                cognome = "Rossi",
-                citta = "Milano",
-                eta = 20
-            },
-            new PersonaViewModel{
-                id = 2,
-                nome = "Marco",
-                cognome = "Bianchi",
-                citta = "Torino",
-                eta = 25
-            },
+                new PersonaViewModel{
+                    id = 1,
+                    nome = "Mario",
+                    cognome = "Rossi",
+                    
+                },
+                new PersonaViewModel{
+                    id = 2,
+                    nome = "Marco",
+                    cognome = "Bianchi",
+                    
+                },
             
-        };
-        return Listapersone;
+            };
+            return Listapersone;
         }
 
+        public PersonaDetailViewModel GetPersona(int id){
+            var persona = new PersonaDetailViewModel(){
+                id=id,
+                nome=$"Nome{id}",
+                cognome=$"Cognome{id}",
+                eta=id,
+                citta=$"Citta{id}",
+                macchine= new List<MacchinaViewModel>()
+            };
+
+            for(var i=1; i<=5; i++){
+                var macchina= new MacchinaViewModel{
+                    marca=$"Marca{i}",
+                    modello=$"Modello{i}",
+                };
+                persona.macchine.Add(macchina);
+            }
+            return persona;
+        }
     }
 }

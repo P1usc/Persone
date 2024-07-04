@@ -39,7 +39,8 @@ namespace Persone.Controllers
 
             return View(viewModel);*/
 
-            throw new NotImplementedException();
+            PersonaDetailViewModel viewModel = personaServices.GetPersona(id);
+            return View(viewModel);
         }
 
         

@@ -20,9 +20,12 @@ namespace Persone.Models.Services.Infrastructure
                     {
                         var dataSet = new DataSet();
                         dataSet.EnforceConstraints = false;
-                        var dataTable = new DataTable();
-                        dataSet.Tables.Add(dataTable);
-                        dataTable.Load(reader);
+                         do{
+                            var dataTable = new DataTable();
+                            dataSet.Tables.Add(dataTable);
+                            dataTable.Load(reader);
+                        } while (!reader.IsClosed);
+                        
                         return dataSet;
                     }
                 }

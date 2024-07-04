@@ -9,5 +9,7 @@ namespace Persone.Models.Services.Application
     public interface IPersonaServices
     {
         List<PersonaViewModel> GetPersone();
+
+        PersonaDetailViewModel GetPersona(int id);
     }
 }

@@ -1,4 +1,4 @@
-@model PersonaViewModel
+@model PersonaDetailViewModel
 
 <h1>Dettagli persona (@Model.nome @Model.cognome)</h1>
 
@@ -29,6 +29,17 @@
         <tr>
             <td>Età</td>
             <td>@Model.eta</td>
+        </tr>
+        <tr>
+            <td>Macchine Registrate</td>
+            <td>
+                <ul>
+                    @foreach (var macchina in Model.macchine)
+                    {
+                        <li>@macchina.marca @macchina.modello</li>
+                    }
+                </ul>
+            </td>
         </tr>
     </tbody>
 </table>
