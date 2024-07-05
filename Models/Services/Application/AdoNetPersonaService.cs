@@ -17,7 +17,7 @@ namespace Persone.Models.Services.Application
         }
 
         public List<PersonaViewModel> GetPersone(){
-            string query = "SELECT Id, Nome, Cognome, Citta, Eta FROM Persone";
+            FormattableString query = $"SELECT Id, Nome, Cognome, Citta, Eta FROM Persone";
             DataSet dataSet = db.Query(query);
 
             var dataTable = dataSet.Tables[0];
@@ -30,8 +30,8 @@ namespace Persone.Models.Services.Application
         }
 
         public PersonaDetailViewModel GetPersona(int id){
-            string query = "SELECT Id, Nome, Cognome, Citta, Eta FROM Persone WHERE Id ="
-            +id + ";SELECT Id, Marca, Modello FROM MAcchine WHERE PersonaId="+id;
+            FormattableString query = $@"SELECT Id, Nome, Cognome, Citta, Eta FROM Persone WHERE Id = {id}
+            ; SELECT Id, Marca, Modello FROM MAcchine WHERE PersonaId={id}";
             DataSet dataSet = db.Query(query);
             var personaDataTable = dataSet.Tables[0];
             if(personaDataTable.Rows.Count != 1){

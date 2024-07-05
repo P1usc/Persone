@@ -9,13 +9,24 @@ namespace Persone.Models.Services.Infrastructure
 {
     public class SqliteDatabaseAccessor : IDatabaseAccessor
     {
-        public DataSet Query(string query)
+        public DataSet Query(FormattableString formattableQuery)
         {
+            var queryArguments = formattableQuery.GetArguments();
+            var sqliteParameter = new List<SqliteParameter>();
+            for(var i = 0; i < queryArguments.Length; i++){
+                var parameter = new SqliteParameter(i.ToString(), queryArguments[i]);
+                sqliteParameter.Add(parameter);
+                queryArguments[i]="@"+1;
+            }
+            string query = formattableQuery.ToString();
+
+
             using (var conn = new SqliteConnection("Data Source=Data/Persona.db"))
             {
                 conn.Open();
                 using (var cmd = new SqliteCommand(query, conn))
                 {
+                    cmd.Parameters.AddRange(sqliteParameter);
                     using (var reader = cmd.ExecuteReader())
                     {
                         var dataSet = new DataSet();
