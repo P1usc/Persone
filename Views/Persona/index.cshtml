@@ -4,9 +4,14 @@
     ViewData["Title"] = "Lista Persone";
 }
 
-<h1 class="text-center mt-4">Lista Persone</h1>
-
 <div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Lista Persone</h1>
+        <div>
+            <a class="btn btn-outline-primary btn-sm mr-2" asp-action="Create"><i class="fa fa-plus"></i> Crea nuova persona</a>
+        </div>
+    </div>
+
     @foreach (PersonaViewModel persona in Model)
     {
         <div class="row justify-content-center mb-3">
@@ -14,8 +19,9 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title text-center">@persona.nome @persona.cognome</h2>
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-between">
                             <a class="btn btn-outline-primary" asp-action="Detail" asp-route-id="@persona.id">Dettaglio</a>
+                            <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@persona.id">Elimina</a>
                         </div>
                     </div>
                 </div>

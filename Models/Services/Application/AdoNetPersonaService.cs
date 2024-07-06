@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Data;
 using Persone.Models.ViewModels;
 using Persone.Models.Services.Infrastructure;
+using Persone.Models.InputModels;
+using Persone.Controllers;
 
 namespace Persone.Models.Services.Application
 {
@@ -48,5 +50,19 @@ namespace Persone.Models.Services.Application
 
             return personaDetailViewModel;
         }
+
+        public PersonaDetailViewModel CreatePersona(PersonaCreateInputModel input){
+            string nome = input.Nome;
+            string cognome = input.Cognome;
+            string citta = input.Citta;
+            int eta = input.Eta;
+            var dataSet= db.Query($@"INSERT INTO Persone (Nome, Cognome, Citta, Eta) VALUES ({nome}, {cognome}, {citta}, {eta});
+            SELECT last_insert_rowid();");
+            int personaId = Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
+            PersonaDetailViewModel persona = GetPersona(personaId);
+            return persona;
+        }
+
+        
     }
 }

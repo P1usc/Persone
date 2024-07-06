@@ -1,0 +1,28 @@
+@using Persone.Models.InputModels
+@model PersonaCreateInputModel
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Nome" class="form-label">Nome</label>
+            <input type="text" asp-for="Nome" class="form-control" placeholder="Inserisci il nome della persona" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Cognome" class="form-label">Cognome</label>
+            <input type="text" asp-for="Cognome" class="form-control" placeholder="Inserisci il cognome della persona" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Citta" class="form-label">Città</label>
+            <input type="text" asp-for="Citta" class="form-control" placeholder="Inserisci la città della persona" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Eta" class="form-label">Età</label>
+            <input type="number" asp-for="Eta" class="form-control" placeholder="Inserisci l'età della persona" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-rocket"></i> Crea persona</button>
+        </div>
+    </div>
+</form>

@@ -12,11 +12,11 @@ namespace Persone.Models.Services.Infrastructure
         public DataSet Query(FormattableString formattableQuery)
         {
             var queryArguments = formattableQuery.GetArguments();
-            var sqliteParameter = new List<SqliteParameter>();
+            var sqliteParameters = new List<SqliteParameter>();
             for(var i = 0; i < queryArguments.Length; i++){
                 var parameter = new SqliteParameter(i.ToString(), queryArguments[i]);
-                sqliteParameter.Add(parameter);
-                queryArguments[i]="@"+1;
+                sqliteParameters.Add(parameter);
+                queryArguments[i]="@"+i;
             }
             string query = formattableQuery.ToString();
 
@@ -26,7 +26,7 @@ namespace Persone.Models.Services.Infrastructure
                 conn.Open();
                 using (var cmd = new SqliteCommand(query, conn))
                 {
-                    cmd.Parameters.AddRange(sqliteParameter);
+                    cmd.Parameters.AddRange(sqliteParameters);
                     using (var reader = cmd.ExecuteReader())
                     {
                         var dataSet = new DataSet();

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Persone.Models.InputModels;
 using Persone.Models.Services.Application;
 using Persone.Models.ViewModels;
 
@@ -43,6 +44,18 @@ namespace Persone.Controllers
             return View(viewModel);
         }
 
+        public IActionResult Create(){
+            
+            var input = new PersonaCreateInputModel();
+            return View(input);
+        }
+
+        [HttpPost]
+        public IActionResult Create(PersonaCreateInputModel input){
         
+            PersonaDetailViewModel persona= personaServices.CreatePersona(input);
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
