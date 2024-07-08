@@ -57,5 +57,11 @@ namespace Persone.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
+        public IActionResult DeletePersona(int id)
+        {
+            personaServices.DeletePersona(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

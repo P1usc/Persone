@@ -19,8 +19,6 @@ namespace Persone.Models.Services.Infrastructure
                 queryArguments[i]="@"+i;
             }
             string query = formattableQuery.ToString();
-
-
             using (var conn = new SqliteConnection("Data Source=Data/Persona.db"))
             {
                 conn.Open();
@@ -39,6 +37,28 @@ namespace Persone.Models.Services.Infrastructure
                         
                         return dataSet;
                     }
+                }
+            }
+        }
+        public int ExecuteNonQuery(FormattableString formattableQuery)
+        {
+            var queryArguments = formattableQuery.GetArguments();
+            var sqliteParameters = new List<SqliteParameter>();
+            for (var i = 0; i < queryArguments.Length; i++)
+            {
+                var parameter = new SqliteParameter("@" + i, queryArguments[i]);
+                sqliteParameters.Add(parameter);
+                queryArguments[i] = "@" + i;
+            }
+            string query = formattableQuery.ToString();
+
+            using (var conn = new SqliteConnection("Data Source=Data/Persona.db"))
+            {
+                conn.Open();
+                using (var cmd = new SqliteCommand(query, conn))
+                {
+                    cmd.Parameters.AddRange(sqliteParameters);
+                    return cmd.ExecuteNonQuery();
                 }
             }
         }

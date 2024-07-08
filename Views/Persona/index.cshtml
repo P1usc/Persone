@@ -21,7 +21,10 @@
                         <h2 class="card-title text-center">@persona.nome @persona.cognome</h2>
                         <div class="d-flex justify-content-between">
                             <a class="btn btn-outline-primary" asp-action="Detail" asp-route-id="@persona.id">Dettaglio</a>
-                            <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@persona.id">Elimina</a>
+                            
+                            <form asp-action="DeletePersona" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-outline-danger" name="id" value="@persona.id">Elimina</button>
+                            </form>
                         </div>
                     </div>
                 </div>

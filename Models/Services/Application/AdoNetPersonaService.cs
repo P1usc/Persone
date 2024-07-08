@@ -62,7 +62,11 @@ namespace Persone.Models.Services.Application
             PersonaDetailViewModel persona = GetPersona(personaId);
             return persona;
         }
+       public void DeletePersona(int id)
+        {
+            FormattableString query = $@"DELETE FROM Persone WHERE Id = {id}";
+            db.ExecuteNonQuery(query);
 
-        
+        }        
     }
 }

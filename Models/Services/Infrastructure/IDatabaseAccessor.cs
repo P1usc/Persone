@@ -9,5 +9,7 @@ namespace Persone.Models.Services.Infrastructure
     public interface IDatabaseAccessor
     {
         DataSet Query(FormattableString formattableQuery);
+        int ExecuteNonQuery(FormattableString formattableQuery);
+        
     }
 }

@@ -14,6 +14,6 @@ namespace Persone.Models.Services.Application
         PersonaDetailViewModel GetPersona(int id);
 
         PersonaDetailViewModel CreatePersona(PersonaCreateInputModel input);
-        
+        void DeletePersona(int id);
     }
 }

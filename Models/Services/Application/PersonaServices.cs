@@ -52,5 +52,9 @@ namespace Persone.Models.Services.Application
         public PersonaDetailViewModel CreatePersona(PersonaCreateInputModel input){
             throw new NotImplementedException();
         }
+        
+        public void DeletePersona(int id){
+            throw new NotImplementedException();
+        }
     }
 }
